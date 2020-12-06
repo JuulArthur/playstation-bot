@@ -1,21 +1,29 @@
 const fetch = require('node-fetch')
 require('dotenv').config();
 const env = process.env;
-console.log('env', env);
 const api_key = env.MAILGUN_API_KEY;
 const domain = env.MAILGUN_DOMAIN;
 const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 const sendToMail = env.SEND_TO_MAIL;
+const sendToMail2 = env.SEND_TO_MAIL_2;
+const debugVar = env.DEBUG_VAR;
 
 const sendMail = async (url, store) => {
     const data = {
         from: 'Your friendly product checker <postmaster@sandboxed928e9c864d44188c7d1998ce7fba1d.mailgun.org>',
         to: sendToMail,
         subject: 'Løp å kjøp PS5',
+        text: `Du kan kjøpe PS5 her: ${url} på butikken ${store}`,
     };
-    data.text = `Du kan kjøpe PS5 her: ${url} på butikken ${store}`
+    const data2 = {
+        from: 'Your friendly product checker <postmaster@sandboxed928e9c864d44188c7d1998ce7fba1d.mailgun.org>',
+        to: sendToMail2,
+        subject: 'Løp å kjøp PS5',
+        text: `Du kan kjøpe PS5 her: ${url} på butikken ${store}`,
+    };
 
     await mailgun.messages().send(data);
+    await mailgun.messages().send(data2);
 }
 
 const komplettPages = ['https://www.komplett.no/product/1111557/gaming/playstation/playstation-5', 'https://www.komplett.no/product/1161553/gaming/playstation/playstation-5-digital-edition'];
@@ -39,6 +47,7 @@ const checkWebsite = async (keyword, urls, store, debug) => {
         const text = await getTextFromWebsite(url)
         if (debug) {
             console.log('text', text);
+            await sendMail(url, store);
         }
         if (textDoesNotExist(text, keyword)) {
             console.log(`Løp å kjøp på ${store}`);
@@ -50,7 +59,7 @@ const checkWebsite = async (keyword, urls, store, debug) => {
 }
 
 const checkKomplett = async () => {
-    await checkWebsite('Motta varsel', komplettPages, 'Komplett');
+    await checkWebsite('Motta varsel', komplettPages, 'Komplett', debugVar === 'true');
 }
 
 const checkElkjop = async () => {
@@ -63,6 +72,7 @@ const checkPower = async () => {
         const textResult = await result.text();
         const jsonResult = JSON.parse(textResult);
         if (jsonResult.ClickNCollectStoreCount > 0 || jsonResult.StockCount > 0) {
+            await sendMail(url, 'Power');
             console.log(`Løp å kjøp på Power, ClickNCollectStoreCount: ${jsonResult.ClickNCollectStoreCount}, StockCount: ${jsonResult.StockCount}`);
         } else {
             console.log(`Den er ikke klar enda på Power`);
