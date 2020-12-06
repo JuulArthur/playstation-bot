@@ -1,4 +1,22 @@
 const fetch = require('node-fetch')
+require('dotenv').config();
+const env = process.env;
+console.log('env', env);
+const api_key = env.MAILGUN_API_KEY;
+const domain = env.MAILGUN_DOMAIN;
+const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+const sendToMail = env.SEND_TO_MAIL;
+
+const sendMail = async (url, store) => {
+    const data = {
+        from: 'Excited User <me@samples.mailgun.org>',
+        to: sendToMail,
+        subject: 'Løp å kjøp PS5',
+    };
+    data.text = `Du kan kjøpe PS5 her: ${url} på butikken ${store}`
+
+    await mailgun.messages().send(data);
+}
 
 const komplettPages = ['https://www.komplett.no/product/1111557/gaming/playstation/playstation-5', 'https://www.komplett.no/product/1161553/gaming/playstation/playstation-5-digital-edition'];
 const elkjopPages = ['https://www.elkjop.no/product/gaming/spillkonsoll/playstation-konsoller/220280/playstation-5-ps5-digital-edition', 'https://www.elkjop.no/product/gaming/spillkonsoll/playstation-konsoller/220276/playstation-5-ps5'];
@@ -21,6 +39,7 @@ const checkWebsite = async (keyword, urls, store, debug) => {
         const text = await getTextFromWebsite(url)
         if (debug) {
             console.log('text', text);
+            await sendMail(url, store);
         }
         if (textDoesNotExist(text, keyword)) {
             console.log(`Løp å kjøp på ${store}`);
@@ -52,7 +71,7 @@ const checkPower = async () => {
 }
 
 const checkCoop = async () => {
-    await checkWebsite('PS5 er utsolgt', coopPages, 'Coop');
+    await checkWebsite('PS5 er utsolgt', coopPages, 'Coop', true);
 }
 
 const checkKjell = async () => {
