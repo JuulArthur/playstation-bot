@@ -9,7 +9,7 @@ const sendToMail = env.SEND_TO_MAIL;
 
 const sendMail = async (url, store) => {
     const data = {
-        from: 'Excited User <me@samples.mailgun.org>',
+        from: 'Your friendly product checker <postmaster@sandboxed928e9c864d44188c7d1998ce7fba1d.mailgun.org>',
         to: sendToMail,
         subject: 'Løp å kjøp PS5',
     };
@@ -39,10 +39,10 @@ const checkWebsite = async (keyword, urls, store, debug) => {
         const text = await getTextFromWebsite(url)
         if (debug) {
             console.log('text', text);
-            await sendMail(url, store);
         }
         if (textDoesNotExist(text, keyword)) {
             console.log(`Løp å kjøp på ${store}`);
+            await sendMail(url, store);
         } else {
             console.log(`Den er ikke klar enda på ${store}`);
         }
@@ -71,7 +71,7 @@ const checkPower = async () => {
 }
 
 const checkCoop = async () => {
-    await checkWebsite('PS5 er utsolgt', coopPages, 'Coop', true);
+    await checkWebsite('PS5 er utsolgt', coopPages, 'Coop');
 }
 
 const checkKjell = async () => {
