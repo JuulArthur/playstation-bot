@@ -46,10 +46,9 @@ const checkWebsite = async (keyword, urls, store, debug) => {
     for (let url of urls) {
         const text = await getTextFromWebsite(url)
         if (debug) {
-            console.log('text', text);
+            console.log('Debugging')
             await sendMail(url, store);
-        }
-        if (textDoesNotExist(text, keyword)) {
+        } else if (textDoesNotExist(text, keyword)) {
             console.log(`Løp å kjøp på ${store}`);
             await sendMail(url, store);
         } else {
