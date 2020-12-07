@@ -32,6 +32,7 @@ const powerPages = ['https://www.power.no/umbraco/api/product/getproductsbyids?i
 const kjellPages = ['https://www.kjell.com/no/produkter/lyd-og-bilde/dataspill-og-gaming/playstation-5/sony-playstation-5-spillkonsol-p62770', 'https://www.kjell.com/no/produkter/lyd-og-bilde/dataspill-og-gaming/playstation-5/sony-playstation-5-digital-edition-spillkonsol-p62771'];
 const coopPages = ['https://coop.no/obs/brand/playstation/'];
 const proshopPages = ['https://www.proshop.no/Spillkonsoll/Sony-PlayStation-5/2831713', 'https://www.proshop.no/Spillkonsoll/Sony-PlayStation-5-Digital-Edition/2863627'];
+const netonnetPages = ['https://www.netonnet.no/art/gaming/spillogkonsoll/playstation/playstation-konsoll/sony-playstation-5/1012886.15693/', 'https://www.netonnet.no/art/gaming/spillogkonsoll/playstation/playstation-konsoll/sony-playstation-5-digital-edition/1013477.15693/'];
 
 const getTextFromWebsite = async (url) => {
     const result = await fetch(url);
@@ -91,6 +92,10 @@ const checkProshop = async () => {
     await checkWebsite('Vi tar for øyeblikket ikke imot flere forhåndsbestillinger', proshopPages, 'Proshop');
 }
 
+const checkNetOnNet = async () => {
+    await checkWebsite('Overvåk produktet', netonnetPages, 'Net On Net');
+}
+
 const main = async () => {
     try {
         await checkKomplett();
@@ -99,6 +104,7 @@ const main = async () => {
         await checkKjell();
         await checkCoop();
         await checkProshop();
+        await checkNetOnNet();
 
         process.exit();
     } catch (e) {
