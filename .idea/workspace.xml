@@ -63,7 +63,7 @@
       <updated>1607250977054</updated>
       <workItem from="1607250978068" duration="8028000" />
       <workItem from="1607330284191" duration="2373000" />
-      <workItem from="1607335644558" duration="145000" />
+      <workItem from="1607335644558" duration="2261000" />
     </task>
     <servers />
   </component>
@@ -95,10 +95,11 @@
     </state>
     <state width="1659" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1607282403993" />
     <state width="1659" height="280" key="GridCell.Tab.0.right/0.23.1920.1057/-1680.23.1680.1027@0.23.1920.1057" timestamp="1607326555152" />
-    <state x="541" y="262" width="598" height="548" key="find.popup" timestamp="1607251735512">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="618" y="269" width="684" height="565" key="find.popup" timestamp="1607345137861">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="541" y="262" width="598" height="548" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607251735512" />
+    <state x="618" y="269" width="684" height="565" key="find.popup/0.23.1920.1057/-1680.23.1680.1027@0.23.1920.1057" timestamp="1607345137861" />
     <state x="577" y="257" width="766" height="696" key="search.everywhere.popup" timestamp="1607333686199">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
