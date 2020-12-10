@@ -23,7 +23,7 @@ const sendMail = async (url, store) => {
     };
 
     await mailgun.messages().send(data);
-    //await mailgun.messages().send(data2);
+    await mailgun.messages().send(data2);
 }
 
 const komplettPages = ['https://www.komplett.no/product/1111557/gaming/playstation/playstation-5', 'https://www.komplett.no/product/1161553/gaming/playstation/playstation-5-digital-edition'];
