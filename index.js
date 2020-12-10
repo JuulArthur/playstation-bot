@@ -43,10 +43,10 @@ const textDoesNotExist = (text, keyword) => {
     return text.indexOf(keyword) === -1;
 }
 
-const checkWebsite = async (keyword, urls, store, debug) => {
+const checkWebsite = async (keyword, urls, store) => {
     for (let url of urls) {
         const text = await getTextFromWebsite(url)
-        if (debug) {
+        if (false) {
             console.log('Debugging')
             await sendMail(url, store);
         } else if (textDoesNotExist(text, keyword)) {
