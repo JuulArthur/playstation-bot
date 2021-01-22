@@ -1,29 +1,30 @@
 const fetch = require('node-fetch')
 require('dotenv').config();
+const notifier = require('node-notifier');
+
+
 const env = process.env;
 const api_key = env.MAILGUN_API_KEY;
 const domain = env.MAILGUN_DOMAIN;
 const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 const sendToMail = env.SEND_TO_MAIL;
-const sendToMail2 = env.SEND_TO_MAIL;
-const debugVar = env.DEBUG_VAR;
 
 const sendMail = async (url, store) => {
+    notifier.notify({
+        title: "Løp og kjøp PS5",
+        message: `Du kan kjøpe PS5 her: ${url} i butikken ${store}`,
+        open: url,
+        sound: true
+    });
+
     const data = {
         from: 'Your friendly product checker <postmaster@sandboxed928e9c864d44188c7d1998ce7fba1d.mailgun.org>',
         to: sendToMail,
         subject: 'Løp å kjøp PS5',
         text: `Du kan kjøpe PS5 her: ${url} på butikken ${store}`,
     };
-    const data2 = {
-        from: 'Your friendly product checker <postmaster@sandboxed928e9c864d44188c7d1998ce7fba1d.mailgun.org>',
-        to: sendToMail2,
-        subject: 'Løp å kjøp PS5',
-        text: `Du kan kjøpe PS5 her: ${url} på butikken ${store}`,
-    };
 
     await mailgun.messages().send(data);
-    await mailgun.messages().send(data2);
 }
 
 const komplettPages = ['https://www.komplett.no/product/1111557/gaming/playstation/playstation-5', 'https://www.komplett.no/product/1161553/gaming/playstation/playstation-5-digital-edition'];
@@ -46,10 +47,10 @@ const textDoesNotExist = (text, keyword) => {
     return text.indexOf(keyword) === -1;
 }
 
-const checkWebsite = async (keyword, urls, store) => {
+const checkWebsite = async (keyword, urls, store, debugVar) => {
     for (let url of urls) {
         const text = await getTextFromWebsite(url)
-        if (false) {
+        if (debugVar === 'true') {
             console.log('Debugging')
             await sendMail(url, store);
         } else if (textDoesNotExist(text, keyword)) {
@@ -62,7 +63,7 @@ const checkWebsite = async (keyword, urls, store) => {
 }
 
 const checkKomplett = async () => {
-    await checkWebsite('Motta varsel', komplettPages, 'Komplett', debugVar === 'true');
+    await checkWebsite('Motta varsel', komplettPages, 'Komplett');
 }
 
 const checkElkjop = async () => {
