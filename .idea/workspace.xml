@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4ab2725-5abf-4466-b8dd-346ff0e7bad8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +67,13 @@
       <workItem from="1607335644558" duration="2516000" />
       <workItem from="1607549384731" duration="332000" />
       <workItem from="1607595264325" duration="1374000" />
+      <workItem from="1608279579360" duration="307000" />
+      <workItem from="1608294522233" duration="891000" />
+      <workItem from="1608537293062" duration="516000" />
+      <workItem from="1611082039395" duration="531000" />
+      <workItem from="1611130918480" duration="186000" />
+      <workItem from="1611145296180" duration="219000" />
+      <workItem from="1611302378104" duration="274000" />
     </task>
     <servers />
   </component>
@@ -96,11 +105,15 @@
     </state>
     <state width="1659" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1607282403993" />
     <state width="1659" height="280" key="GridCell.Tab.0.right/0.23.1920.1057/-1680.23.1680.1027@0.23.1920.1057" timestamp="1607326555152" />
-    <state x="618" y="269" width="684" height="565" key="find.popup" timestamp="1607345137861">
+    <state x="459" y="154" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608059574756">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="459" y="154" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1608059574756" />
+    <state x="618" y="269" width="684" height="565" key="find.popup" timestamp="1608297397266">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="541" y="262" width="598" height="548" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1607251735512" />
-    <state x="618" y="269" width="684" height="565" key="find.popup/0.23.1920.1057/-1680.23.1680.1027@0.23.1920.1057" timestamp="1607345137861" />
+    <state x="618" y="269" width="684" height="565" key="find.popup/0.23.1920.1057/-1680.23.1680.1027@0.23.1920.1057" timestamp="1608297397266" />
     <state x="577" y="257" width="766" height="696" key="search.everywhere.popup" timestamp="1607415249613">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
